@@ -1,0 +1,12 @@
+# Ruff
+.ruff_cache
+
+# Poetry
+/.venv
+/.venv/
+.venv/
+.poetry/
+poetry.lock
+pip-wheel-metadata/
+pip_egg_info/
+__pypackages__/

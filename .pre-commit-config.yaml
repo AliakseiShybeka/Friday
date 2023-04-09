@@ -1,0 +1,8 @@
+repos:
+    -   repo: local
+        hooks:
+            -   id: ruff
+                name: ruff
+                entry: ./ruff_hook.sh
+                language: system
+                types: [file, python]
