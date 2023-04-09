@@ -12,6 +12,15 @@ pipeline {
                 echo "Hello"
             }
         }
+
+        stage('Install Dependencies') {
+            steps {
+                sh "pip install --upgrade pip"
+                sh "pip install poetry==1.4.2"
+                sh "poetry install --no-root --no-interaction --no-ansi"
+            }
+        }
+
     }
 
 }
