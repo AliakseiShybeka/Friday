@@ -16,6 +16,8 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 sh "poetry --version"
+                sh "poetry install --no-root --no-interaction --no-ansi"
+                
             }
         }
 
