@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     options {
-        buildDiscarder logRorator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '5', daysToKeepStr: '', numToKeepSt: '5')
+        buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '5', daysToKeepStr: '', numToKeepSt: '5')
         disableConcurrentBuilds()
     }
 
@@ -13,5 +13,5 @@ pipeline {
             }
         }
     }
-    
+
 }
