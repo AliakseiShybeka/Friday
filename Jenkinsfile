@@ -24,7 +24,7 @@ pipeline {
         stage('Pre-commit double-check') {
             steps {
                 sh 'chmod +x ./re_check_with_ruff_linter.sh'
-                sh './re_check_with_ruff_linter.sh
+                sh './re_check_with_ruff_linter.sh'
             }
         }
     }
