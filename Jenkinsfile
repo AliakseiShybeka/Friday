@@ -9,6 +9,7 @@ pipeline {
     environment {
         DOCKER_HUB_USERNAME = credentials('DOCKER_HUB_USERNAME')
         DOCKER_HUB_ACCESS_TOKEN = credentials('DOCKER_HUB_ACCESS_TOKEN')
+        DOCKER_HUB_REPO = "alexshybeka/friday"
     }
 
     stages {
@@ -38,7 +39,7 @@ pipeline {
 
             steps {
                 sh """
-                   sudo docker build -t myfridayapp:1.0 .
+                   sudo docker build -t ${DOCKER_HUB_REPO}:1.4 .
                 """
             }
         }
@@ -48,9 +49,8 @@ pipeline {
                 withCredentials([string(credentialsId: 'DOCKER_HUB_ACCESS_TOKEN', variable: 'DOCKER_HUB_ACCESS_TOKEN')]) {
                     sh """
                         echo 'hello'
-                        sudo docker tag myfridayapp:1.0 alexshybeka/myfridayapp:1.0
                         sudo echo "${DOCKER_HUB_ACCESS_TOKEN}" | docker login --username ${DOCKER_HUB_USERNAME} --password-stdin
-                        sudo docker push alexshybeka/myfridayapp:1.0
+                        sudo docker push ${DOCKER_HUB_REPO}:1.4
 
                     """
                 }
