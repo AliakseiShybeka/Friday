@@ -24,8 +24,7 @@ pipeline {
         stage('Pre-commit double-check') {
             steps {
                 sh '''
-                    files=$(git diff-tree --no-commit-id --name-only -r HEAD | grep '\.py$' | xargs -I {} sh -c 'if [ -e "{}" ]; then echo "{}"; fi')
-sa=2
+                    files=$(git diff-tree --no-commit-id --name-only -r HEAD | grep '\.py$')
                     if [ -n "$files" ]; then
                         poetry run ruff check $files
                     fi
