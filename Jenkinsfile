@@ -45,7 +45,14 @@ pipeline {
 
         stage('Push Image to Docker Hub') {
             steps {
-                sh 'echo $DOCKER_HUB_ACCESS_TOKEN'
+                withCredentials([string(credentialsId: 'DOCKER_HUB_ACCESS_TOKEN', variable: 'DOCKER_HUB_ACCESS_TOKEN')]) {
+                    sh """
+                        echo "${DOCKER_HUB_ACCESS_TOKEN}" | docker login --username ${DOCKER_HUB_USERNAME} --password-stdin
+                        docker push myfridayapp:1.0
+                        
+                    """
+                }
+
             }
         }
 
