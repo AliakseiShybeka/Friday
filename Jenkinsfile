@@ -17,9 +17,17 @@ pipeline {
             steps {
                 sh "poetry --version"
                 sh "poetry install --no-root --no-interaction --no-ansi"
-                
+
             }
         }
+
+        stage('Pre-commit double-check') {
+            steps {
+                sh "poetry run pre-commit run --all-files"
+            }
+        }
+
+        
 
     }
 
