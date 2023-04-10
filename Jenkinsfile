@@ -34,7 +34,7 @@ pipeline {
 
             steps {
                 sh """
-                   sudo docker build -t myfridayapp:1.0.
+                   sudo docker build -t myfridayapp:1.0 .
                 """
             }
         }
