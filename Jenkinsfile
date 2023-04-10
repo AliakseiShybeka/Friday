@@ -6,6 +6,10 @@ pipeline {
         disableConcurrentBuilds()
     }
 
+    environment {
+        DOCKER_HUB_USERNAME = credentials('DOCKER_HUB_USERNAME')
+        DOCKER_HUB_ACCESS_TOKEN = credentials('DOCKER_HUB_ACCESS_TOKEN')
+    }
 
     stages {
         stage('Hello') {
@@ -36,6 +40,12 @@ pipeline {
                 sh """
                    sudo docker build -t myfridayapp:1.0 .
                 """
+            }
+        }
+
+        stage('Push Image to Docker Hub') {
+            steps {
+                sh 'echo $DOCKER_HUB_ACCESS_TOKEN'
             }
         }
 
