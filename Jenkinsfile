@@ -6,7 +6,7 @@ pipeline {
         disableConcurrentBuilds()
     }
 
-  
+
     stages {
         stage('Hello') {
             steps {
@@ -30,6 +30,14 @@ pipeline {
             }
         }
 
+        stage('Build Docker Image') {
+
+            steps {
+                sh """
+                    docker build .
+                """
+            }
+        }
 
     }
 
