@@ -34,7 +34,7 @@ pipeline {
 
             steps {
                 sh """
-                    docker build .
+                   sudo docker build .
                 """
             }
         }
