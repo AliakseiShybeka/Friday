@@ -36,6 +36,9 @@ pipeline {
         }
 
         stage('Build Docker Image') {
+            when {
+                branch 'main'
+            }
 
             steps {
                 sh """
@@ -45,6 +48,9 @@ pipeline {
         }
 
         stage('Push Image to Docker Hub') {
+            when {
+                branch 'main'
+            }
             steps {
                 withCredentials([string(credentialsId: 'DOCKER_HUB_ACCESS_TOKEN', variable: 'DOCKER_HUB_ACCESS_TOKEN')]) {
                     sh """
