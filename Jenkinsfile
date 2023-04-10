@@ -25,7 +25,7 @@ pipeline {
             steps {
                 sh '''
                     files=$(git diff-tree --no-commit-id --name-only -r HEAD | grep '\.py$' | xargs -I {} sh -c 'if [ -e "{}" ]; then echo "{}"; fi')
-
+sa=2
                     if [ -n "$files" ]; then
                         poetry run ruff check $files
                     fi
