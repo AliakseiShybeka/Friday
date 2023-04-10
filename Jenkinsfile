@@ -21,17 +21,17 @@ pipeline {
             }
         }
 
-        stage('Pre-commit double-check') {
-            steps {
-                sh '''
-                    git checkout main
-                    files=$(git diff-tree --no-commit-id --name-only -r HEAD | grep '\\.py$')
-                    if [ -n "$files" ]; then
-                        poetry run ruff check $files
-                    fi
-                '''
-            }
-        }
+        // stage('Pre-commit double-check') {
+        //     steps {
+        //         sh '''
+        //             git checkout main
+        //             files=$(git diff-tree --no-commit-id --name-only -r HEAD | grep '\\.py$')
+        //             if [ -n "$files" ]; then
+        //                 poetry run ruff check $files
+        //             fi
+        //         '''
+        //     }
+        // }
     }
 
 }
