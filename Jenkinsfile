@@ -6,6 +6,10 @@ pipeline {
         disableConcurrentBuilds()
     }
 
+    environment {
+
+    }
+
     stages {
         stage('Hello') {
             steps {
@@ -15,8 +19,9 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                sh "poetry --version"
-                sh "poetry install --no-root --no-interaction --no-ansi"
+                sh "sudo curl -sSL https://install.python-poetry.org | python3 -"
+                sh "sudo poetry --version"
+                sh "sudo poetry install --no-root --no-interaction --no-ansi"
 
             }
         }
@@ -27,6 +32,7 @@ pipeline {
                 sh './re_check_with_ruff_linter.sh'
             }
         }
-    }
+
+        
 
 }
