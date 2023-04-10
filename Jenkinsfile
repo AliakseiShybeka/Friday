@@ -56,7 +56,7 @@ pipeline {
                     sh """
                         echo 'hello'
                         sudo echo "${DOCKER_HUB_ACCESS_TOKEN}" | docker login --username ${DOCKER_HUB_USERNAME} --password-stdin
-                        sudo docker push ${DOCKER_HUB_REPO}:1.4
+                        docker push ${DOCKER_HUB_REPO}:1.4
 
                     """
                 }
