@@ -36,8 +36,8 @@ pipeline {
         }
 
         stage('Build Docker Image') {
-            when {
-                branch 'main'
+           when {
+                expression { env.BRANCH_NAME == 'main' || env.TAG_NAME != null }
             }
 
             steps {
