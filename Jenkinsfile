@@ -40,7 +40,7 @@ pipeline {
                 anyof {
                     branch 'main'
                     expression {
-                               returnStdout: true, script: 'git tag'
+                               sh(returnStdout: true, script: 'git tag')
                      }
                 }
 
@@ -57,8 +57,8 @@ pipeline {
             when {
                 anyof {
                     branch 'main'
-                     expression {
-                               returnStdout: true, script: 'git tag'
+                    expression {
+                               sh(returnStdout: true, script: 'git tag')
                      }
                 }
                 }
