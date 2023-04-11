@@ -1,6 +1,6 @@
 ## Project Dependencies Setup
 
-This project requires several dependencies to be installed before it can be run successfully. The setup.sh shell script has been provided to automate the installation process.
+This project requires several dependencies. The setup.sh shell script uses for automate this.
 
 ### Prerequisites
 Before running the setup.sh script, ensure that the following are installed on your machine:
@@ -8,7 +8,7 @@ Before running the setup.sh script, ensure that the following are installed on y
 - Python 3
 - Poetry
 ### Installation
-To install the project dependencies, follow these steps:
+To install the project dependencies, do this:
 
 1. Clone the project repository to your local machine.
 2. Navigate to the root directory of the project.
