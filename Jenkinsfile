@@ -36,23 +36,20 @@ pipeline {
         }
 
         stage('Build Docker Image') {
-
+            when {
+                branch 'main'
+            }
 
             steps {
                 sh """
-                    GIT_TAG=$(git describe --tags --abbrev=0)
-                    echo 'Git Tag: ${GIT_TAG}'
-                    sudo docker build -t ${DOCKER_HUB_REPO}:1.4 .
+                   sudo docker build -t ${DOCKER_HUB_REPO}:1.4 .
                 """
             }
         }
 
         stage('Push Image to Docker Hub') {
             when {
-                anyOf {
-                    branch 'main'
-                    tag('*')
-                }
+                branch 'main'
             }
             steps {
                 withCredentials([string(credentialsId: 'DOCKER_HUB_ACCESS_TOKEN', variable: 'DOCKER_HUB_ACCESS_TOKEN')]) {
