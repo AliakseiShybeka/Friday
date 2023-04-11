@@ -36,14 +36,22 @@ pipeline {
         }
 
         stage('Build Docker Image') {
-           when {
+            when {
                 expression { env.BRANCH_NAME == 'main' || env.TAG_NAME != null }
             }
-
             steps {
-                sh """
-                   sudo docker build -t ${DOCKER_HUB_REPO}:1.4 .
-                """
+                script {
+                    def dockerTag
+                    if (env.BRANCH_NAME == 'main') {
+                        dockerTag = 'main'
+                    } else {
+                        dockerTag = env.TAG_NAME
+                    }
+
+                    sh """
+                        sudo docker build -t ${DOCKER_HUB_REPO}:${dockerTag} .
+                    """
+                }
             }
         }
 
