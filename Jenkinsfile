@@ -39,7 +39,7 @@ pipeline {
             when {
                 anyOf {
                     branch 'main'
-                    tag()
+                    tag('.*')
                 }
 
             }
@@ -55,7 +55,7 @@ pipeline {
             when {
                 anyOf {
                     branch 'main'
-                    tag()
+                    tag('.*')
                 }
             }
             steps {
