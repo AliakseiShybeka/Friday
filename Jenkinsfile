@@ -46,7 +46,7 @@ pipeline {
 
             steps {
                 sh """
-                   sudo docker build -t ${DOCKER_HUB_REPO}:1.4 .
+                     sudo docker build -t ${DOCKER_HUB_REPO}:1.4 .
                 """
             }
         }
