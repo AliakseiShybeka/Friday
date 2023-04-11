@@ -36,31 +36,46 @@ pipeline {
         }
 
         stage('Build Docker Image') {
-           when {
+            when {
                 expression { env.BRANCH_NAME == 'main' || env.TAG_NAME != null }
             }
-
             steps {
-                sh """
-                   sudo docker build -t ${DOCKER_HUB_REPO}:1.4 .
-                """
+                script {
+                    def dockerTag
+                    if (env.BRANCH_NAME == 'main') {
+                        dockerTag = 'main'
+                    } else {
+                        dockerTag = env.TAG_NAME
+                    }
+
+                    sh """
+                        sudo docker build -t ${DOCKER_HUB_REPO}:${dockerTag} .
+                    """
+                }
             }
         }
 
         stage('Push Image to Docker Hub') {
             when {
-                branch 'main'
+                expression { env.BRANCH_NAME == 'main' || env.TAG_NAME != null }
             }
             steps {
                 withCredentials([string(credentialsId: 'DOCKER_HUB_ACCESS_TOKEN', variable: 'DOCKER_HUB_ACCESS_TOKEN')]) {
-                    sh """
-                        echo 'hello'
-                        sudo echo "${DOCKER_HUB_ACCESS_TOKEN}" | docker login --username ${DOCKER_HUB_USERNAME} --password-stdin
-                        docker push ${DOCKER_HUB_REPO}:1.4
+                    script {
+                        def dockerTag
+                        if (env.BRANCH_NAME == 'main') {
+                            dockerTag = 'main'
+                        } else {
+                            dockerTag = env.TAG_NAME
+                        }
 
-                    """
+                        sh """
+                            echo 'hello'
+                            sudo echo "${DOCKER_HUB_ACCESS_TOKEN}" | docker login --username ${DOCKER_HUB_USERNAME} --password-stdin
+                            docker push ${DOCKER_HUB_REPO}:${dockerTag}
+                        """
+                    }
                 }
-
             }
         }
 
