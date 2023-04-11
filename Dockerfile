@@ -22,4 +22,4 @@ COPY . /app/
 EXPOSE 5000
 
 # Run the application
-CMD ["python", "hello_world.py"]
+CMD ["python", "friday.py"]
