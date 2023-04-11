@@ -39,7 +39,7 @@ pipeline {
             when {
                 anyof {
                     branch 'main'
-                    tag /^[0-9]+\.[0-9]+\.[0-9]+$/
+                    tag '*'
                 }
 
             }
