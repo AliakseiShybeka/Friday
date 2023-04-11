@@ -55,7 +55,7 @@ pipeline {
             when {
                 anyof {
                     branch 'main'
-                    tags /^[0-9]+\.[0-9]+\.[0-9]+$/
+                    tag '*'
                 }
             }
             steps {
