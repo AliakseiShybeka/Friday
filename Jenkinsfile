@@ -38,6 +38,7 @@ pipeline {
         stage('Build Docker Image') {
             when {
                 branch 'main'
+                tag /^[0-9]+\.[0-9]+\.[0-9]+$/
             }
 
             steps {
@@ -50,6 +51,7 @@ pipeline {
         stage('Push Image to Docker Hub') {
             when {
                 branch 'main'
+                tag /^[0-9]+\.[0-9]+\.[0-9]+$/
             }
             steps {
                 withCredentials([string(credentialsId: 'DOCKER_HUB_ACCESS_TOKEN', variable: 'DOCKER_HUB_ACCESS_TOKEN')]) {
