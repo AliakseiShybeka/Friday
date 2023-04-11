@@ -17,3 +17,8 @@ To install the project dependencies, do this:
 
 This will install all the project dependencies, including the virtual environment using Poetry, pre-commit hooks, and Ruff.
 
+Main goal of this project was show how can it be possible to create simpe flask application and pack it inside docker container.
+
+ruff is used as linter for GitHub hooks before every commit if you run setup.sh
+
+main body of script is inside friday.py
