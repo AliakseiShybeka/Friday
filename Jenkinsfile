@@ -61,7 +61,6 @@ pipeline {
                                sh(returnStdout: true, script: 'git tag')
                      }
                 }
-                }
             }
             steps {
                 withCredentials([string(credentialsId: 'DOCKER_HUB_ACCESS_TOKEN', variable: 'DOCKER_HUB_ACCESS_TOKEN')]) {
