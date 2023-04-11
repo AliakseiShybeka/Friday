@@ -37,9 +37,9 @@ pipeline {
 
         stage('Build Docker Image') {
             when {
-                anyof {
+                anyOf {
                     branch 'main'
-                    tag
+                    tag()
                 }
 
             }
@@ -53,9 +53,9 @@ pipeline {
 
         stage('Push Image to Docker Hub') {
             when {
-                anyof {
+                anyOf {
                     branch 'main'
-                    tag
+                    tag()
                 }
             }
             steps {
