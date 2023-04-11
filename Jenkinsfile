@@ -36,12 +36,7 @@ pipeline {
         }
 
         stage('Build Docker Image') {
-            when {
-                anyOf {
-                    branch 'feature'
-                }
 
-            }
 
             steps {
                 sh """
