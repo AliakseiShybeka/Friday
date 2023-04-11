@@ -41,8 +41,8 @@ pipeline {
             steps {
                 sh """
                     GIT_TAG=$(git describe --tags --abbrev=0)
-                    echo "Git Tag: ${GIT_TAG}"
-                     sudo docker build -t ${DOCKER_HUB_REPO}:1.4 .
+                    echo \"Git Tag: \${GIT_TAG}\"
+                    sudo docker build -t ${DOCKER_HUB_REPO}:1.4 .
                 """
             }
         }
