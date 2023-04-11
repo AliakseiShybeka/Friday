@@ -39,7 +39,6 @@ pipeline {
             when {
                 anyOf {
                     branch 'feature'
-                    tag('*')
                 }
 
             }
