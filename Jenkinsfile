@@ -39,7 +39,9 @@ pipeline {
             when {
                 anyof {
                     branch 'main'
-                    tag '*'
+                    expression {
+                               returnStdout: true, script: 'git tag'
+                     }
                 }
 
             }
@@ -55,7 +57,10 @@ pipeline {
             when {
                 anyof {
                     branch 'main'
-                    tag '*'
+                     expression {
+                               returnStdout: true, script: 'git tag'
+                     }
+                }
                 }
             }
             steps {
