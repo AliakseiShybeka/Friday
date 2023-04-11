@@ -39,7 +39,7 @@ pipeline {
             when {
                 anyof {
                     branch 'main'
-                    
+                    tag
                 }
 
             }
@@ -55,7 +55,7 @@ pipeline {
             when {
                 anyof {
                     branch 'main'
-
+                    tag
                 }
             }
             steps {
